@@ -11,11 +11,11 @@
 Supports:
 
 - Debian
-- - Kali Linux
-- - Parrot OS
+  - Kali Linux
+  - Parrot OS
 
 - Arch Linux
-- - Blackarch
+  - Blackarch
 
 ---
 

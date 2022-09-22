@@ -477,6 +477,7 @@ Install_log () {
     echo "'projects'                ---- Opens Project Dir"
 
     echo "\n                 ##SYSTEM ALIASES##"
+    echo "'pubip'                   ---- Displays Public IP"
     echo "'c'                       ---- Shorterns The Clear Command"
     echo "'lt'                      ---- Improved File Visability & Layout"
     echo "'ports'                   ---- Lists All Open Ports"
@@ -494,38 +495,77 @@ Install_log () {
 
 }
 
-clear && echo KALI Setup Script
-echo "\n"
-echo "Would You Like To Install?"
-echo "To Uninstall Type Out 'uninstall'."
-read -p "Continue (y/n)? " ASK
-if [ "$ASK" = "y" ]; then
- #Ease_Of_Life
- #Dirs
- #Git_Installs
- #VPNS
- #Download_Files
- Aliases
- Install_log
- cd ~ && ls
- exit 0
 
-elif [ "$ASK" = "n" ]; then
-echo "Exting.."
-sleep 1
-clear
-exit 0
+Custom__Install () {
+    logo
+    echo "\n\n"
+    echo "|1| Tools Only"
+    echo "|2| Directories & Subdirectories"
+    echo "|3| Github Clones (Requires Dirs & Subdirs)"
+    echo "|4| Install VPN's (NordVPN)"
+    echo "|5| Download Files (Wordlists--Requires|2|)"
+    echo "|6| Install ZSH Alias's"
+    echo "|7| See All Changes"
+    echo "|8| Install Everything"
+    echo "|9| Uninstall Everything"
+    echo "|10| EXIT"
 
-elif [ "$ASK" = "uninstall"]; then
- Uninstall
- exit 0
+    read -p "|Select An Option:> " ASK
+    if [ "$ASK" = "1" ]; then
+     Ease_Of_Life
+     exit
 
-else
- echo ${RED} Well Thats Not An Option..
- echo Exiting.. ${NC}
- exit 1
-fi
+    elif [ "$ASK" = "2" ]; then
+     Dirs
+     echo "Created Dirs"
+     exit
 
+    elif [ "$ASK" = "3" ]; then
+     Git_Installs
+     exit
+
+    elif [ "$ASK" = "4" ]; then
+     VPNS
+     exit
+
+    elif [ "$ASK" = "5" ]; then
+     Dirs
+     Download_Files
+     exit
+
+    elif [ "$ASK" = "6" ]; then
+     Aliases
+     exit
+
+    elif [ "$ASK" = "7" ]; then
+     Install_log
+     exit
+
+    elif [ "$ASK" = "8" ]; then
+    Ease_Of_Life
+    Dirs
+    Git_Installs
+    VPNS
+    Download_Files
+    Aliases
+    Install_log
+    exit
+
+    elif [ "$ASK" = "9" ]; then
+    Uninstall
+
+    elif [ "$ASK" = "10" ]; then
+    exit
+
+    else
+        echo "WTF.. How'd You Fuck That Up?.."
+        sleep 1
+        echo "Returning To Where You Fucked up.."
+        sleep 2
+        clear
+        Custom__Install
+    fi
+}
 
 Uninstall () {
     cd ~
@@ -597,6 +637,43 @@ Uninstall () {
     echo "Uninstalled Everything & Files Have Been Reverted."
 }
 
+
+###################################################################################################################################################################
+###################################################################################################################################################################
+###################################################################################################################################################################
+###################################################################################################################################################################
+###################################################################################################################################################################
+
+logo
+echo "\n"
+clear && echo KALI Setup Script
+echo "\n"
+echo "Would You Like To Install?"
+echo "|1| Yeah, Install The Lot. (Reccomended)"
+echo "|2| More Options (Advanced Menu)"
+read -p "Continue (y/n)? " ASK
+if [ "$ASK" = "1" ]; then
+ Ease_Of_Life
+ Dirs
+ Git_Installs
+ VPNS
+ Download_Files
+ Aliases
+ Install_log
+ cd ~ && ls
+ exit 0
+
+elif [ "$ASK" = "2" ]; then
+echo "Exting.."
+sleep 1
+clear
+exit 0
+
+###################################################################################################################################################################
+###################################################################################################################################################################
+###################################################################################################################################################################
+###################################################################################################################################################################
+###################################################################################################################################################################
 
 
 : "

@@ -391,7 +391,7 @@ Aliases () {
     echo '#SHOWS PUBLIC IP WHICH ISNT SUPPORTED BY IPCONFIG' | sudo tee -a .zshrc
     echo 'pubip(){' | sudo tee -a .zshrc
     echo '   pubip="$(dig +short myip.opendns.com @resolver1.opendns.com)"' | sudo tee -a .zshrc
-    echo '   echo Public IP Address: "\e[1;4;32m${pubip}\e[0m"' | sudo tee -a .zshrc
+    echo '   echo Public IP Address: "\e[1;4;34m${pubip}\e[0m"' | sudo tee -a .zshrc
     echo    "\n}" | sudo tee -a .zshrc
 #    echo \n\n | sudo tee -a .zshrc
 

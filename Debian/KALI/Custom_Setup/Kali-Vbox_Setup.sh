@@ -513,33 +513,33 @@ Custom__Install () {
     read -p "|Select An Option:> " ASK
     if [ "$ASK" = "1" ]; then
      Ease_Of_Life
-     exit
+     exit 0
 
     elif [ "$ASK" = "2" ]; then
      Dirs
      echo "Created Dirs"
-     exit
+     exit 0
 
     elif [ "$ASK" = "3" ]; then
      Git_Installs
-     exit
+     exit 0
 
     elif [ "$ASK" = "4" ]; then
      VPNS
-     exit
+     exit 0
 
     elif [ "$ASK" = "5" ]; then
      Dirs
      Download_Files
-     exit
+     exit 0
 
     elif [ "$ASK" = "6" ]; then
      Aliases
-     exit
+     exit 0
 
     elif [ "$ASK" = "7" ]; then
      Install_log
-     exit
+     exit 0
 
     elif [ "$ASK" = "8" ]; then
     Ease_Of_Life
@@ -549,13 +549,13 @@ Custom__Install () {
     Download_Files
     Aliases
     Install_log
-    exit
+    exit 0
 
     elif [ "$ASK" = "9" ]; then
     Uninstall
 
     elif [ "$ASK" = "10" ]; then
-    exit
+    exit 0
 
     else
         echo "WTF.. How'd You Fuck That Up?.."

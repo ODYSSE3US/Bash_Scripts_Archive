@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# Updates Packages
+sudo -S apt get update && sudo apt get upgrade
+# Check Graphics card driver
+lspci | grep VGA
+# Searches Nvidia Packages
+sudo apt search nvidia-driver 
+# Install Nvidia Graphics -- Important to prevent display issues.
+sudo apt install nvidia-driver -y
+# Important  Misc
+sudo apt install -y snapd
+sudo apt install -y toilet
+sudo apt install -y lolcat
+sudo apt install -y wine
+sudo apt install -y cmatrix
+sudo apt install -y 
+# Basic Programming Langs
+sudo apt install -y golang
+sudo apt install -y python3
+sudo apt install -y docker
+sudo apt install -y npm
+sudo apt install -y torbrowser-launcher
+sudo apt install -y 

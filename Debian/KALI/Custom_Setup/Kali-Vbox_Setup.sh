@@ -9,6 +9,7 @@ CYAN='\033[0;36m'
 ORANGE='\033[0;33m'
 YELLOW='\033[1;33m'
 NC='\033[0m' # No Color
+Now_hourly= $(date +%d-%b-%H_%M) # EG output; 12-Feb-17_50
 
 logo () {
     clear
@@ -205,7 +206,7 @@ VPNS () {
     cd ~ && cd Downloads
     curl https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/nordvpn-release_1.0.0_all.deb --output NordVPN.deb
     echo kali | sudo -S apt install ./NordVPN.deb
-    echo kali | sudo -S apt-get update && sudo apt-get upgrade upgrade && cd ~
+    echo kali | sudo -S apt-get update && sudo apt-get upgrade && cd ~
 
 }
 

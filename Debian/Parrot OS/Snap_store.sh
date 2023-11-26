@@ -45,6 +45,7 @@ CyberSec () {
 #TODO: Create More Options instead of defaulting to all.
 
 Install_all () {
+    toilet INSTALLING ALL.. -f smblock -w 500 | lolcat
     Productivity
     Social
     Security
@@ -52,3 +53,17 @@ Install_all () {
     echo Done..
     exit 0
 }
+
+Check_Dependencies () {
+
+    echo -n "Checking dependencies... "
+    for name in toilet lolcat
+    do
+        [[ $(which $name 2>/dev/null) ]] || { echo -en "\n$name needs to be installed. Use 'sudo apt get install $name'";deps=1; }
+    done
+        [[ $deps -ne 1 ]] && echo "OK" || { echo -en "\nInstall the above and rerun this script\n";exit 1; }
+}
+
+
+Check_Dependencies
+Install_all

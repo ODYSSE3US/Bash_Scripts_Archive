@@ -21,4 +21,5 @@ sudo apt install -y python3
 sudo apt install -y docker
 sudo apt install -y npm
 sudo apt install -y torbrowser-launcher
+sudo apt install -y zsh-syntax-highlighting
 #sudo apt install -y 

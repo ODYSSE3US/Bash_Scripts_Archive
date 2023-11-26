@@ -3,8 +3,11 @@
 
 echo checking alias
 
+shopt -s expand_aliases
+source ~/.zshrc
+
 for name in cd ls; do
-  if [alias "$name >/dev/null 2>&1"]; then
+  if ["$(type -t $name)" = 'alias' ]; then
     echo alias is predefined
   else
     echo alias is not defined

@@ -38,6 +38,18 @@ Burpsuit='~/CyberSec/Discovery/Web-Content/Burpsuit'
 ParamList='~/CyberSec/Discovery/Web-Content/Burpsuit/Param_lists'
 
 
+Check_Dependencies () {
+
+    echo -n "Checking dependencies... "
+    for name in curl toilet
+    do
+        [[ $(which $name 2>/dev/null) ]] || { echo -en "\n$name needs to be installed. Use 'sudo apt get install $name'";deps=1; }
+    done
+        [[ $deps -ne 1 ]] && echo "OK" || { echo -en "\nInstall the above and rerun this script\n";exit 1; }
+}
+
+
+
 Dirs () {
     cd ~
     mkdir Darknet
@@ -201,3 +213,8 @@ Download_Files () {
     # N/A
 
 }
+
+
+Check_Dependencies
+Dirs
+Download_Files

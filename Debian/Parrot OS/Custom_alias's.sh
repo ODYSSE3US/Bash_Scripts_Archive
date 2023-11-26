@@ -16,11 +16,11 @@ Create_backup () {
 System_alias () {
     #SYSTEM
     echo "alias lt='ls --human-readable --size -1 -S --classify' #Improved File Visability & Layout" | sudo tee -a .zshrc
-    echo "alias upgrade='sudo apt-get update && sudo apt-get upgrade' #Update And Upgrade In One Command" | sudo tee -a .zshrc
+    echo "alias upgrade='sudo apt get update && sudo apt get upgrade' #Update And Upgrade In One Command" | sudo tee -a .zshrc
     echo "alias ports='netstat -tulanp' #Lists all open ports" | sudo tee -a .zshrc
     echo "alias c='clear' #Shorterns The Clear Command" | sudo tee -a .zshrc
     echo "alias cleardown='cd ~/Downloads && rm -r *' #Clears downloads folder" | sudo tee -a .zshrc
-    echo "alias cls='clear && ls' #Clears & Lists Files" | sudo tee -a .zshrc
+    echo "alias cls='clear && ls' #Clears Screen & Lists Files" | sudo tee -a .zshrc
     echo "alias datenow='date +%d-%b-%H_%M'" | sudo tee -a .zshrc
     #echo "alias shortName='Command_Here'" | sudo tee -a .zshrc
 
@@ -34,7 +34,7 @@ Python_alias () {
 
 }
 
-Misc_Alias () {
+Misc_alias () {
     echo "alias ody='toilet ODYSSEUS.. -f smblock -w 500 | lolcat'" | sudo tee -a .zshrc
     echo "alias legend='toilet LIVING LEGEND.. -f smblock -w 500 | lolcat'" | sudo tee -a .zshrc
 
@@ -54,3 +54,17 @@ Advanced_alias () {
 
 # More Functions Here
 }
+
+
+
+run () {
+    Create_backup
+    System_alias
+    Python_alias
+    Misc_alias
+    Advanced_alias
+    echo Done...
+    exit 0
+}
+
+run

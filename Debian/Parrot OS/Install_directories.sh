@@ -10,14 +10,14 @@ YELLOW='\033[1;33m'
 NC='\033[0m' # No Color
 
 
-Darknet='~/Darknet'
-PGP_Keys='~/Darknet/PGP_Keys'
-Bookmarks='~/Darknet/Bookmarks'
+Darknet='~/CyberSec/Darknet'
+PGP_Keys='~/CyberSec/Darknet/PGP_Keys'
+Bookmarks='~/CyberSec/Darknet/Bookmarks'
 
-Github='~/Github'
-Projects='~/Projects'
-Reports='~/Reports'
-Templates='~/Reports/Templates'
+Github='~/CyberSec/Github'
+Projects='~/CyberSec/Projects'
+Reports='~/CyberSec/Reports'
+Templates='~/CyberSec/Reports/Templates'
 
 CyberSec='~/CyberSec'
 Pwlists='~/CyberSec/Pwlists'
@@ -49,14 +49,15 @@ Check_Dependencies () {
 }
 
 
-
+# TODO Make dirs match variables, but simplify it
 Dirs () {
     cd ~
+    mkdir CyberSec
+    cd CyberSec
     mkdir Darknet
     mkdir Github
     mkdir Projects
-    mkdir Reports # Make sub Dir for templates
-    mkdir CyberSec
+    mkdir Reports
     #Darknet SubDirs
     cd Darknet && mkdir PGP_Keys && mkdir Bookmarks && cd ~
     #CyberSec SubDirs
@@ -66,7 +67,7 @@ Dirs () {
     #CyberSec/Web-Content/SubDirs
     cd Web-Content && mkdir -p Burpsuit/Param_lists && mkdir URLS
     # Report SubDirs
-    cd ~/Reports && mkdir Templates && mkdir Finished && In_Progress
+    cd Reports && mkdir Templates && mkdir Finished && In_Progress
     ##CyberSec/Fuzzing/SubDirs
     cd ~/CyberSec/Fuzzing && mkdir -p XSS/Polyglots && mkdir User-Agents && mkdir SQLi
 }
@@ -78,7 +79,7 @@ Download_Files () {
     echo "\n"
     toilet DOWNLOADING PASSWORD LISTS.. -f smblock -w 500
     echo "____________________________________________________"
-    cd ~/CyberSec/Pwlists
+    cd "$Pwlists"
     curl https://raw.githubusercontent.com/danielmiessler/SecLists/master/Passwords/Common-Credentials/10-million-password-list-top-100.txt --output Top100.txt
     curl https://raw.githubusercontent.com/danielmiessler/SecLists/master/Passwords/Common-Credentials/10-million-password-list-top-500.txt --output Top500.txt
     curl https://raw.githubusercontent.com/danielmiessler/SecLists/master/Passwords/Common-Credentials/10-million-password-list-top-1000.txt --output Top1K.txt
@@ -95,7 +96,7 @@ Download_Files () {
     echo "\n"
     toilet DOWNLOADING PARAMETER LISTS.. -f smblock -w 500
     echo "____________________________________________________"
-    cd ~/CyberSec/Discovery/Web-Content/Burpsuit/Param_lists
+    cd "$ParamList"
     curl https://raw.githubusercontent.com/danielmiessler/SecLists/master/Discovery/Web-Content/BurpSuite-ParamMiner/lowercase-headers --output lowercase_headers.txt
     curl https://raw.githubusercontent.com/danielmiessler/SecLists/master/Discovery/Web-Content/BurpSuite-ParamMiner/uppercase-headers --output UPPERCASE_HEADERS.txt
     curl https://raw.githubusercontent.com/danielmiessler/SecLists/master/Discovery/Web-Content/burp-parameter-names.txt --output BurpParam-Names.txt
@@ -104,7 +105,7 @@ Download_Files () {
     echo "\n"
     toilet DOWNLOADING URL LISTS.. -f smblock -w 500
     echo "____________________________________________________"
-    cd ~/CyberSec/Discovery/Web-Content/URLS
+    cd "$URLS"
     curl https://raw.githubusercontent.com/danielmiessler/SecLists/master/Discovery/Web-Content/URLs/urls-wordpress-3.3.1.txt --output WordPressURLS.txt
     curl https://raw.githubusercontent.com/danielmiessler/SecLists/master/Discovery/Web-Content/URLs/urls-joomla-3.0.3.txt --output JoomlaURLS.txt
     curl https://raw.githubusercontent.com/danielmiessler/SecLists/master/Discovery/Web-Content/URLs/urls-SAP.txt --output SapURLS.txt
@@ -114,7 +115,7 @@ Download_Files () {
     echo "\n"
     toilet DOWNLOADING WEB-CONTENT LISTS.. -f smblock -w 500
     echo "____________________________________________________"
-    cd ~/CyberSec/Discovery/Web-Content
+    cd "$Web-Content"
     curl https://raw.githubusercontent.com/danielmiessler/SecLists/master/Discovery/Web-Content/web-all-content-types.txt --output All_Web-Content_Types.txt
     curl https://raw.githubusercontent.com/danielmiessler/SecLists/master/Discovery/Web-Content/web-extensions.txt --output Web-Extentions.txt
     curl https://raw.githubusercontent.com/danielmiessler/SecLists/master/Discovery/Web-Content/web-mutations.txt --output Web-Mutations.txt
@@ -125,7 +126,7 @@ Download_Files () {
     echo "\n"
     toilet DOWNLOADING BUG-BOUNTY REPORT TEMPLATES.. -f smblock -w 500
     echo "____________________________________________________"
-    cd ~/Reports/Templates
+    cd "$Templates"
     curl https://raw.githubusercontent.com/ZephrFish/BugBountyTemplates/master/Blank.md --output All_Purpose.md
     curl https://raw.githubusercontent.com/ZephrFish/BugBountyTemplates/master/Example.md --output All_Purpose-EXAMPLE.md
     curl https://raw.githubusercontent.com/ZephrFish/BugBountyTemplates/master/short.md --output All_Purpose-short.md
@@ -135,7 +136,7 @@ Download_Files () {
     echo "\n"
     toilet DOWNLOADING FUZZING LISTS.. -f smblock -w 500
     echo "____________________________________________________"
-    cd ~/CyberSec/Fuzzing
+    cd "$Fuzzing"
     curl https://raw.githubusercontent.com/danielmiessler/SecLists/master/Fuzzing/XSS-Fuzzing --output XSS-Fuzz.txt
     curl https://raw.githubusercontent.com/danielmiessler/SecLists/master/Fuzzing/XXE-Fuzzing.txt --output XXE-Fuzz.txt
     curl https://raw.githubusercontent.com/danielmiessler/SecLists/master/Fuzzing/XML-FUZZ.txt --output XML-Fuzz.txt
@@ -147,7 +148,7 @@ Download_Files () {
     echo "\n"
     toilet DOWNLOADING XSS PAYLOADS.. -f smblock -w 500
     echo "____________________________________________________"
-    cd ~/CyberSec/Fuzzing/XSS
+    cd "$XSS"
     curl https://raw.githubusercontent.com/danielmiessler/SecLists/master/Fuzzing/XSS/XSS-BruteLogic.txt --output XSS-BruteLogic.txt
     curl https://raw.githubusercontent.com/danielmiessler/SecLists/master/Fuzzing/XSS/XSS-Bypass-Strings-BruteLogic.txt --output XSS-Bypass-Strings.txt
     curl https://raw.githubusercontent.com/danielmiessler/SecLists/master/Fuzzing/XSS/XSS-With-Context-Jhaddix.txt --output XSS-With-Context-Jhaddix.txt
@@ -159,7 +160,7 @@ Download_Files () {
     echo "\n"
     toilet DOWNLOADING XSS POLYGLOTS.. -f smblock -w 500
     echo "____________________________________________________"
-    cd ~/CyberSec/Fuzzing/XSS/Polyglots
+    cd "$Polyglots"
     curl https://raw.githubusercontent.com/danielmiessler/SecLists/master/Fuzzing/Polyglots/XSS-Polyglots.txt --output XSS-Polyglots.txt
     curl https://raw.githubusercontent.com/danielmiessler/SecLists/master/Fuzzing/Polyglots/XSS-innerht-ml.txt --output XSS-innerht-ml.txt
     curl https://raw.githubusercontent.com/danielmiessler/SecLists/master/Fuzzing/Polyglots/XSS-Polyglot-Ultimate-0xsobky.txt --output Ultimate-XSS-Polyglot.txt
@@ -168,7 +169,7 @@ Download_Files () {
     echo "\n"
     toilet DOWNLOADING SQLI PAYLOADS.. -f smblock -w 500
     echo "____________________________________________________"
-    cd ~/CyberSec/Fuzzing/SQLi
+    cd "$SQLi"
     curl https://raw.githubusercontent.com/danielmiessler/SecLists/master/Fuzzing/Polyglots/SQLi-Polyglots.txt --output SQLi-Polyglots.txt
     curl https://raw.githubusercontent.com/danielmiessler/SecLists/master/Fuzzing/SQLi/quick-SQLi.txt --output quick-SQLi.txt
     curl https://raw.githubusercontent.com/danielmiessler/SecLists/master/Fuzzing/SQLi/Generic-SQLi.txt --output Generic-SQLi.txt
@@ -178,7 +179,7 @@ Download_Files () {
     echo "\n"
     toilet DOWNLOADING USER-AGENT LISTS.. -f smblock -w 500
     echo "____________________________________________________"
-    cd ~/CyberSec/Fuzzing/User-Agents
+    cd "$User-Agents"
     curl https://raw.githubusercontent.com/danielmiessler/SecLists/master/Fuzzing/User-Agents/user-agents-whatismybrowserdotcom-large.txt --output User-Agents-Large.txt
     curl https://raw.githubusercontent.com/danielmiessler/SecLists/master/Fuzzing/User-Agents/UserAgents-IE.txt --output Internet-Explorer.txt
     curl https://raw.githubusercontent.com/danielmiessler/SecLists/master/Fuzzing/User-Agents/operating-system-name/android.txt --output Android.txt
